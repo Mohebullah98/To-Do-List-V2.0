@@ -7,7 +7,7 @@ const ejs =require("ejs");
 app.use(express.urlencoded({
   extended: true
 }));
-const uri="mongodb+srv://Moheb:Metsjets1@cluster0.0mu45.mongodb.net/todolistDB?retryWrites=true&w=majority";
+const uri="mongodb+srv://Moheb:******@cluster0.0mu45.mongodb.net/todolistDB?retryWrites=true&w=majority";
 mongoose.connect(uri);
 const itemSchema = new mongoose.Schema({ //simple schema with name for list items
   name:String
