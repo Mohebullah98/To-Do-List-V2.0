@@ -1,5 +1,4 @@
 const express = require("express");
-const port = 3000;
 const app = express();
 const date = require(__dirname + "/date.js");
 const mongoose =require("mongoose");
@@ -8,7 +7,8 @@ const ejs =require("ejs");
 app.use(express.urlencoded({
   extended: true
 }));
-mongoose.connect("mongodb://localhost:27017/todolistDB");
+const uri="mongodb+srv://Moheb:Metsjets1@cluster0.0mu45.mongodb.net/todolistDB?retryWrites=true&w=majority";
+mongoose.connect(uri);
 const itemSchema = new mongoose.Schema({ //simple schema with name for list items
   name:String
 });
@@ -128,6 +128,10 @@ app.get("/:customList",function(req,res){
   });
 });
 
+let port = process.env.PORT; //used for heroku deployment to access site online
+if (port == null || port == "") {
+  port = 3000;
+}
 app.listen(port, function(req, res) {
-  console.log("Server has started up on Port 3000");
+  console.log("Server has started up successfully");
 });
